@@ -14,9 +14,9 @@ public class CarsRowMapper implements RowMapper<CarsModel> {
          car.setCar_id(resultSet.getInt("car_id"));
          car.setSeller_id(resultSet.getInt("seller_id"));
          car.setCar_category(resultSet.getString("car_category"));
-         car.setCar_manufactured_year(resultSet.getString("car_manufactured_year"));
+         car.setCar_mfg_year(resultSet.getString("car_mfg_year"));
          car.setCar_fuel_type(resultSet.getString("car_fuel_type"));
-         car.setCar_registration_due_year(resultSet.getString("car_registration_due_year"));
+         car.setCar_reg_due_year(resultSet.getString("car_reg_due_year"));
          car.setCar_insurance_due_date(resultSet.getString("car_insurance_due_date"));
          car.setCar_transmission_type(resultSet.getString("car_transmission_type"));
          car.setCar_ad_published_date(resultSet.getString("car_ad_published_date"));

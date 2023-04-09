@@ -6,9 +6,9 @@ public class CarsModel {
 	private String car_category;
 	private String car_model;
 	private String car_desc;
-	private String car_manufactured_year;
+	private String car_mfg_year;
 	private String car_fuel_type;
-	private String car_registration_due_year;
+	private String car_reg_due_year;
 	private String car_insurance_due_date;
 	private String car_transmission_type;
 	private String car_ad_published_date;
@@ -59,12 +59,12 @@ public class CarsModel {
 		this.car_model = car_model;
 	}
 
-	public String getCar_manufactured_year() {
-		return car_manufactured_year;
+	public String getCar_mfg_year() {
+		return car_mfg_year;
 	}
 
-	public void setCar_manufactured_year(String car_manufactured_year) {
-		this.car_manufactured_year = car_manufactured_year;
+	public void setCar_mfg_year(String car_mfg_year) {
+		this.car_mfg_year = car_mfg_year;
 	}
 
 	public String getCar_fuel_type() {
@@ -75,12 +75,12 @@ public class CarsModel {
 		this.car_fuel_type = car_fuel_type;
 	}
 
-	public String getCar_registration_due_year() {
-		return car_registration_due_year;
+	public String getCar_reg_due_year() {
+		return car_reg_due_year;
 	}
 
-	public void setCar_registration_due_year(String car_registration_due_year) {
-		this.car_registration_due_year = car_registration_due_year;
+	public void setCar_reg_due_year(String car_reg_due_year) {
+		this.car_reg_due_year = car_reg_due_year;
 	}
 
 	public String getCar_insurance_due_date() {

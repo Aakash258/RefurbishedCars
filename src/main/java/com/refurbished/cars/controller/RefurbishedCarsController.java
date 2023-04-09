@@ -3,6 +3,8 @@ package com.refurbished.cars.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.refurbished.cars.models.CarsModel;
+import com.refurbished.cars.models.LoginFormModel;
 import com.refurbished.cars.models.SellerDetailsModel;
 import com.refurbished.cars.rowMappers.CarsRowMapper;
 
@@ -36,6 +39,19 @@ public class RefurbishedCarsController {
 
 		return cars;
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@PostMapping("checkLoginCreds")
+	public ResponseEntity<?> checkLoginCreds(@RequestBody LoginFormModel loginForm) {
+		
+		String sql = "select count(*) from seller_credentials where seller_userid='"+loginForm.getUserid()+"' AND seller_password='"+loginForm.getPassword()+"'";
+
+		int seller_var = jdbcTemplate.queryForObject(sql, Integer.class);
+		if(seller_var>=1) {
+			return ResponseEntity.ok(loginForm);
+		}
+		return new ResponseEntity(HttpStatus.BAD_REQUEST);
+	}
 
 	@PutMapping("/updateSellerDetails")
 	public SellerDetailsModel updateSellerDetails(@RequestBody SellerDetailsModel seller) {
@@ -53,8 +69,8 @@ public class RefurbishedCarsController {
 	public int addcars(@RequestBody CarsModel carObj) {
 
 		String sql = "insert into cars VALUES (" + carObj.getSeller_id() + carObj.getCar_category()
-				+ carObj.getCar_model() + carObj.getCar_desc() + carObj.getCar_manufactured_year()
-				+ carObj.getCar_fuel_type() + carObj.getCar_registration_due_year() + carObj.getCar_insurance_due_date()
+				+ carObj.getCar_model() + carObj.getCar_desc() + carObj.getCar_mfg_year()
+				+ carObj.getCar_fuel_type() + carObj.getCar_reg_due_year() + carObj.getCar_insurance_due_date()
 				+ carObj.getCar_transmission_type() + carObj.getCar_ad_published_date() + carObj.getCar_price()
 				+ carObj.getCar_discounted_price() + carObj.getCar_sold() + carObj.getCar_owners_count()
 				+ carObj.getCar_km_run() + carObj.getCar_rto() + "";
